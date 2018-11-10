@@ -20,22 +20,34 @@ public class UnsortedListPriorityQueue<K,V> {
 	 * @param key priority
 	 * @param value data
 	 */
-	public void insert(K key, V value)
+	public Node<K,V> insert(K key, V value)
 	{
 		Node<K,V> newNode = new Node<>(key, value);
 		
 		if (first == null)
 		{
+			size++;	
 			first = newNode;
 			last = newNode;
+			return newNode;
 		}
 		
-		else
+		/*if(key==min().priority) 
 		{
+			size++;	
 			last.setNext(newNode);
 			last = newNode;
+			return newNode;
+		}*/
+		
+		else
+		{	
+			size++;	
+			newNode.setNext(first);
+			first = newNode;
+			return newNode;
 		}
-		size++;	
+		
 	}// end of insert()
 	
 	/**
@@ -119,17 +131,18 @@ public class UnsortedListPriorityQueue<K,V> {
 		//for empty queue
 		if (first == null)
 			return "null queue";
+		
 		//if only one element
 		if (first.getNext()==null)
 			return "{ ("+first.getPriority()+","+first.getData()+") }";
 		
 		Node<K,V> position = first;
-		System.out.print("{ ");
-		System.out.print(" ("+position.getPriority()+","+position.getData()+"), ");
+		System.out.print("{ \n");
+		System.out.println(" ("+position.getPriority()+","+position.getData()+"), ");
 		position = position.getNext();
 		while (position!=null)
 		{
-			System.out.print(" ("+position.getPriority()+","+position.getData()+"), ");
+			System.out.println(" ("+position.getPriority()+","+position.getData()+"), ");
 			position = position.getNext();
 		}
 		return"}";
