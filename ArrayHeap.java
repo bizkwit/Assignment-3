@@ -33,6 +33,25 @@ public class ArrayHeap<K,V>  {
 		 return size==0;
 	 }
 	
+	 public void modLast() {
+		 int i,currentKey;
+		 int max=1;
+		 Job current=(Job)min().getValue();
+		 
+		 for(i=0;i<heap.length;i++) {
+			 currentKey=(int)heap[i].getKey();
+			 if(currentKey>max) {
+				 max=currentKey;
+				 current=(Job)heap[i].getValue();
+			 }
+		 }
+		 current.setJobPriority(1);
+	 }
+	 
+	 public Object getMinVal() {
+		 return removeMin().getValue();
+	 }
+	 
 	 /**
 	  * <h1> checks the size of the heap </h1>
 	  * @return heap's size
