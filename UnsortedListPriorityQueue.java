@@ -32,13 +32,13 @@ public class UnsortedListPriorityQueue<K,V> {
 			return newNode;
 		}
 		
-		if(key==min().priority) 
+		/*if(key==min().priority) 
 		{
 			size++;	
 			last.setNext(newNode);
 			last = newNode;
 			return newNode;
-		}
+		}*/
 		
 		else
 		{	
@@ -131,6 +131,7 @@ public class UnsortedListPriorityQueue<K,V> {
 		//for empty queue
 		if (first == null)
 			return "null queue";
+		
 		//if only one element
 		if (first.getNext()==null)
 			return "{ ("+first.getPriority()+","+first.getData()+") }";
