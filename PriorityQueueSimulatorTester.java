@@ -70,7 +70,7 @@ public class PriorityQueueSimulatorTester {
 				Job processing=(Job)heapQueue.getMinVal();
 				System.out.println("Processing "+processing.toString());
 	
-				systemTime+=1;
+				systemTime++;
 				int currentJob=processing.getCurrentJobLength();
 				currentJob-=1;
 				processing.setCurrentJobLength(currentJob);
@@ -85,7 +85,6 @@ public class PriorityQueueSimulatorTester {
 				//REINSERTION
 				if(processing.getCurrentJobLength()>0) {
 					heapQueue.insert(processing.getJobPriority(), processing);
-					systemTime++;
 					starveCheck=false;
 				}
 				
