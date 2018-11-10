@@ -113,25 +113,29 @@ public class PriorityQueueSimulatorTester {
 		//JOB PROCESSING
 		System.out.println("Commencing Queue Processing..");
 		j=0;
-		while(list.isEmpty()!=true){
-			Job current=list.removeMin().getData();
+		while(j<100){
+			System.out.println("New CPU Iteration:");
+			Job current=new Job(list.min().getData());
 			System.out.println("Current Job: "+current.toString()+"\n");
-			
 			int length=current.getCurrentJobLength()-1;
 			int priority=current.getFinalPriority();
 			current.setCurrentJobLength(length);
-			list.insert(priority, current);
+			System.out.println("Removing: "+list.removeMin().toString()+"\n");
 			
-			if(length<=0) {
-				list.removeMin();
+			if(current.getCurrentJobLength()==0) {
 				System.out.println("\n***Job Complete***\n");
-
 			}
+			
+			if(current.getCurrentJobLength()!=0) {
+				System.out.println("Inserting :"+list.insert(priority, current).toString()+"\n");
+			}
+			
 			System.out.println(list.toString()+"\n");
+			j++;
 		}
+		
 		System.out.println("\nCPU is free...\nJobs Completed: "+completed);
 		
 	}
-
 }
 
