@@ -50,6 +50,17 @@ public class Job{
 		waitTime = wT;
 	}
 	
+	public Job(Job copy) {
+		jobName=copy.jobName;
+		jobLength=copy.jobLength;
+		currentJobLength=copy.currentJobLength;
+		jobPriority=copy.jobPriority;
+		finalPriority=copy.finalPriority;
+		entryTime=copy.entryTime;
+		endTime=copy.endTime;
+		waitTime=copy.waitTime;
+	}
+	
 	/**
 	 * <h1> gets job name </h1>
 	 * @return jobName
@@ -188,7 +199,7 @@ public class Job{
 	
 	public String toString()
 	{
-		return jobName+". Job length: "+jobLength+" cycles; Current remaing length: "
-				+currentJobLength+" cycles; Initial priority: "+jobPriority;
+		return jobName+". Job length: "+jobLength+" cycles: Current remaing length: "
+				+currentJobLength+" cycles: Initial priority: "+jobPriority+" Current priority: "+finalPriority;
 	}
 }
